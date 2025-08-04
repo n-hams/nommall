@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Nommall.hub</title>
@@ -8,27 +7,64 @@
     body {
       margin: 0;
       background-color: white;
-      color: black;
       font-family: Arial, sans-serif;
+      color: black;
+      position: relative;
+      height: 100vh;
     }
 
+    /* Linha horizontal de 1px no pixel 60 */
+    .top-line {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: black;
+    }
+
+    /* Logo no canto superior esquerdo */
     .logo {
       position: absolute;
-      top: 50px;
-      left: 50px;
+      top: 148px;
+      left: 148px;
       width: 148px;
-      font-size: 24px;
-      font-weight: bold;
+    }
+
+    /* Texto central "in development" */
+    .dev-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 48px; /* Equivalente ao size="7" */
+      color: yellow;
+    }
+
+    /* Rodapé com © 2025 Nommall.hub */
+    .footer {
+      position: absolute;
+      bottom: 16px;
+      width: 100%;
+      text-align: center;
+      font-size: 12px; /* Equivalente ao size="4" */
+      color: black;
     }
   </style>
 </head>
 <body>
-  <div class="logo">Nommall.hub</div>
+
+  <!-- Linha de 1px -->
+  <div class="top-line"></div>
+
+  <!-- Logo -->
+  <img src="sua_logo.png" class="logo" alt="Logo">
+
+  <!-- Texto central -->
+  <div class="dev-text">in development</div>
+
+  <!-- Rodapé -->
+  <div class="footer">© 2025 Nommall.hub</div>
+
 </body>
 </html>
-<footer style="position: absolute; bottom: 40px; width: 100%; text-align: center;">
-  <p style="font-size: 14px; color: black;">© 2025 Nommall.hub</p>
-</footer>
-<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-  <p style="font-size: 36px; color: grey; font-weight: bold; margin: 0;">in development</p>
-</div>
