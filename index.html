@@ -25,7 +25,7 @@
       background-repeat: no-repeat;
     }
 
-    /* HEADER COM TRANSPARÊNCIA */
+    /* ESTILO DO MENU FIXO (TEXTOS) */
     .header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -34,17 +34,27 @@
       justify-content: space-between;
       align-items: baseline;
       z-index: 2000;
+      color: black; /* Letra preta padrão */
+      transition: color 0.5s ease; /* Transição suave de cor */
+    }
+
+    /* O FUNDO TRANSPARENTE (SEPARADO) */
+    .header-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 120px; /* Altura aproximada do header com padding */
       background: rgba(255, 255, 255, 0.4); /* Transparência branca */
       backdrop-filter: blur(5px); /* Efeito de vidro */
+      z-index: 1999; /* Fica logo atrás dos textos */
       transition: opacity 0.5s ease, visibility 0.5s ease;
-      color: black; /* Letra preta conforme pedido */
+      opacity: 1; /* Começa visível */
     }
 
     .nav-group { display: flex; gap: 25px; }
 
     .nav-item {
       text-decoration: none;
-      color: black;
+      color: inherit; /* Segue a cor do .header */
       transition: opacity 0.3s ease, transform 0.1s ease;
       opacity: 0.8;
     }
@@ -63,17 +73,17 @@
       z-index: 500;
       pointer-events: none;
       text-align: center;
-      width: 90%; /* Evita que encoste nas bordas */
+      width: 90%;
     }
 
     .status-text {
       font-size: 36px; 
       font-weight: bold; 
-      color: black; /* Mudado para preto */
+      color: black; 
       text-transform: uppercase; 
       opacity: 0.2; 
       margin: 0;
-      white-space: nowrap; /* Garante que não pule linha */
+      white-space: nowrap;
     }
 
     /* SEÇÕES */
@@ -121,7 +131,7 @@
       font-weight: 200;
       text-transform: uppercase;
       cursor: pointer;
-      color: black !important; /* Força cor preta no celular */
+      color: black !important;
       opacity: 1 !important;
       padding: 10px 0;
     }
@@ -129,13 +139,14 @@
     /* RESPONSIVIDADE CELULAR */
     @media (max-width: 768px) {
       .header { padding: 20px; }
+      .header-bg { height: 70px; } /* Altura menor no celular */
       .nav-group { gap: 15px; }
       .logo { font-size: 18px; }
-      .status-text { font-size: 20px; } /* Diminui para caber em uma linha */
+      .status-text { font-size: 20px; }
       
       .contact-container { flex-direction: column; gap: 50px; }
       .form-container { width: 100%; }
-      .social-links { order: 2; } /* Links sociais embaixo no celular */
+      .social-links { order: 2; }
     }
 
     footer { position: absolute; bottom: 40px; width: 100%; text-align: center; }
@@ -145,7 +156,9 @@
 </head>
 <body>
 
-  <div class="header" id="main-header">
+  <div class="header-bg" id="header-bg"></div>
+
+  <div class="header">
     <a href="#" class="nav-item logo">Nommall.hub</a>
     <div class="nav-group">
       <a href="#contact" class="nav-item btn-link">Contact</a>
@@ -181,15 +194,17 @@
   </section>
 
   <script>
-    // Lógica para sumir com o header transparente no scroll
+    // Lógica para sumir APENAS com o fundo transparente no scroll
     window.onscroll = function() {
-      var header = document.getElementById("main-header");
+      var headerBg = document.getElementById("header-bg");
       if (window.pageYOffset > 100) {
-        header.style.opacity = "0";
-        header.style.visibility = "hidden";
+        // Quando rola para baixo: esconde o fundo
+        headerBg.style.opacity = "0";
+        headerBg.style.visibility = "hidden";
       } else {
-        header.style.opacity = "1";
-        header.style.visibility = "visible";
+        // Quando está no topo: mostra o fundo
+        headerBg.style.opacity = "1";
+        headerBg.style.visibility = "visible";
       }
     };
   </script>
