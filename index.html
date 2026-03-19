@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nommall.hub</title>
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -16,18 +14,18 @@
       background-color: white;
     }
 
-    /* TELA INICIAL (CAPA) */
+    /* CAPA */
     .hero-section {
       position: relative;
       height: 100vh;
       width: 100%;
-      background-image: url('assets/asdasdasdasd.jpg'); 
+      background-image: url('assets/asdasdasdasd.jpg.png'); 
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
 
-    /* CABEÇALHO (Logo e Botões) */
+    /* HEADER */
     .header {
       position: fixed;
       top: 50px;
@@ -37,97 +35,133 @@
       justify-content: space-between;
       align-items: baseline;
       z-index: 2000;
-      /* Mágica da cor reversa + borda fina */
       mix-blend-mode: difference; 
       color: white; 
     }
 
-    /* Estilo comum para Logo e Botões */
+    .nav-group {
+      display: flex;
+      gap: 25px; /* Espaço entre Contact e Projects */
+    }
+
     .nav-item {
       text-decoration: none;
       color: white;
-      /* Borda fina (stroke) que inverte com o mix-blend-mode */
-      text-shadow: 
-        -0.5px -0.5px 0 rgba(255,255,255,0.2),  
-         0.5px -0.5px 0 rgba(255,255,255,0.2),
-        -0.5px  0.5px 0 rgba(255,255,255,0.2),
-         0.5px  0.5px 0 rgba(255,255,255,0.2);
+      text-shadow: -0.5px -0.5px 0 rgba(255,255,255,0.2), 0.5px -0.5px 0 rgba(255,255,255,0.2);
       transition: opacity 0.3s ease, transform 0.1s ease;
-      opacity: 0.7; /* Começa um pouco mais "apagado" */
+      opacity: 0.7;
     }
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      opacity: 1; /* Logo sempre forte */
-    }
+    .logo { font-size: 24px; font-weight: bold; opacity: 1; }
+    .btn-link { font-size: 12px; font-weight: 200; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
 
-    .btn-link {
-      font-size: 12px;
-      font-weight: 200;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      cursor: pointer;
-    }
+    .nav-item:hover { opacity: 1; }
+    .nav-item:active { transform: scale(0.95); }
 
-    /* ANIMAÇÃO SUTIL AO PASSAR O MOUSE */
-    .nav-item:hover {
-      opacity: 1; /* Intensidade total */
-    }
-
-    /* ANIMAÇÃO DE CLIQUE (MOVIMENTO DE APERTADO) */
-    .nav-item:active {
-      transform: scale(0.95); /* Diminui levemente como se afundasse */
-    }
-
-    /* TEXTO "IN DEVELOPMENT" ESTÁTICO */
+    /* IN DEVELOPMENT */
     .status-container {
-      position: fixed; /* Fica parado na tela durante o scroll */
-      top: 50%;
-      left: 50%;
+      position: fixed;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       z-index: 500;
-      pointer-events: none; /* Garante que não atrapalhe cliques no site */
+      pointer-events: none;
       mix-blend-mode: difference;
     }
 
     .status-text {
-      font-size: 36px;
-      font-weight: bold;
-      color: white;
-      text-transform: uppercase;
-      opacity: 0.3; /* Intensidade reduzida em mais de 50% para ser discreto */
-      margin: 0;
+      font-size: 36px; font-weight: bold; color: white;
+      text-transform: uppercase; opacity: 0.3; margin: 0;
     }
 
-    /* SEÇÃO PROJECTS (BRANCA E LONGA) */
-    #projects {
+    /* SEÇÕES */
+    #projects { width: 100%; height: 5760px; background-color: white; }
+
+    #contact {
       width: 100%;
-      height: 5760px; 
+      height: 100vh; /* Seção de contato ocupa uma tela cheia no final */
       background-color: white;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: center;
+      align-items: center;
+      position: relative;
     }
 
-    footer {
-      padding-bottom: 40px;
-      text-align: center;
+    /* LAYOUT DE CONTATO (Conforme sua imagem) */
+    .contact-container {
+      width: 80%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
     }
 
-    footer p {
-      font-size: 14px;
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .social-item {
+      font-size: 12px;
+      font-weight: 200;
+      text-transform: uppercase;
+      text-decoration: none;
       color: black;
-      mix-blend-mode: normal; /* Footer sempre preto no fundo branco */
+      letter-spacing: 1px;
+      transition: opacity 0.3s;
     }
+
+    .social-item:hover { opacity: 0.5; }
+
+    /* FORMULÁRIO */
+    .form-container {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form-row { display: flex; align-items: center; gap: 15px; }
+    .form-label { font-size: 12px; font-weight: 200; text-transform: uppercase; }
+
+    input, textarea {
+      width: 100%;
+      border: 1px solid black;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+      outline: none;
+    }
+
+    textarea { height: 300px; resize: none; }
+
+    .btn-send {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      font-size: 12px;
+      font-weight: 200;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 10px 0;
+      transition: transform 0.1s;
+    }
+
+    .btn-send:active { transform: scale(0.9); }
+
+    footer { position: absolute; bottom: 40px; width: 100%; text-align: center; }
+    footer p { font-size: 10px; color: black; opacity: 0.5; }
+
   </style>
 </head>
 <body>
 
   <div class="header">
     <a href="#" class="nav-item logo">Nommall.hub</a>
-    
-    <a href="#projects" class="nav-item btn-link">Projects</a>
+    <div class="nav-group">
+      <a href="#contact" class="nav-item btn-link">Contact</a>
+      <a href="#projects" class="nav-item btn-link">Projects</a>
+    </div>
   </div>
 
   <div class="status-container">
@@ -136,7 +170,28 @@
 
   <section class="hero-section"></section>
 
-  <section id="projects">
+  <section id="projects"></section>
+
+  <section id="contact">
+    <div class="contact-container">
+      
+      <div class="social-links">
+        <a href="https://www.instagram.com/hugocom_h/" target="_blank" class="social-item">Instagram</a>
+        <a href="https://www.behance.net/Hugoal92" target="_blank" class="social-item">Behance</a>
+        <a href="https://www.linkedin.com/in/hugo-alexandre-maas-663984134/" target="_blank" class="social-item">Linkedin</a>
+      </div>
+
+      <form class="form-container" action="https://formspree.io/f/myknolql">
+        <div class="form-row">
+          <span class="form-label">E-mail</span>
+          <input type="email" name="email" required>
+        </div>
+        <textarea name="message" required></textarea>
+        <button type="submit" class="btn-send">Send</button>
+      </form>
+
+    </div>
+
     <footer>
       <p>© 2025 Nommall.hub</p>
     </footer>
