@@ -1,15 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nommall.hub</title>
   <style>
     body {
       margin: 0;
-      background-color: white;
-      color: black;
+      /* Configuração da Imagem de Fundo */
+      background-image: url('asdasdasdasd.jpg'); /* Certifique-se que o nome do arquivo está correto */
+      background-size: cover;      /* Faz a imagem cobrir a tela toda */
+      background-position: center; /* Centraliza a imagem */
+      background-attachment: fixed;/* Mantém o fundo fixo ao rolar */
+      background-repeat: no-repeat;
+      background-color: #1a1a1a;   /* Cor de fundo caso a imagem falhe */
+      
+      color: white; /* Alterado para branco para melhor leitura sobre a imagem */
       font-family: Arial, sans-serif;
+      height: 100vh;
     }
 
     .logo {
@@ -19,16 +27,65 @@
       width: 148px;
       font-size: 24px;
       font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para destacar do fundo */
+    }
+
+    .status-container {
+      position: absolute; 
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 100%;
+    }
+
+    .status-text {
+      font-size: 36px; 
+      color: #e0e0e0; 
+      font-weight: bold; 
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+    }
+
+    footer {
+      position: absolute; 
+      bottom: 40px; 
+      width: 100%; 
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 14px; 
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    /* Ajustes para Celular */
+    @media (max-width: 600px) {
+      .logo {
+        left: 20px;
+        top: 20px;
+        font-size: 20px;
+      }
+      .status-text {
+        font-size: 28px;
+      }
     }
   </style>
 </head>
 <body>
+
   <div class="logo">Nommall.hub</div>
+
+  <div class="status-container">
+    <p class="status-text">in development</p>
+  </div>
+
+  <footer>
+    <p>© 2025 Nommall.hub</p>
+  </footer>
+
 </body>
 </html>
-<footer style="position: absolute; bottom: 40px; width: 100%; text-align: center;">
-  <p style="font-size: 14px; color: black;">© 2025 Nommall.hub</p>
-</footer>
-<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-  <p style="font-size: 36px; color: grey; font-weight: bold; margin: 0;">in development</p>
-</div>
