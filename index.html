@@ -5,87 +5,141 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nommall.hub</title>
   <style>
+    /* Configurações Globais */
+    html {
+      scroll-behavior: smooth; /* Faz o scroll ser suave */
+    }
+
     body {
       margin: 0;
-      /* Configuração da Imagem de Fundo */
-      background-image: url('asdasdasdasd.jpg.png'); /* Certifique-se que o nome do arquivo está correto */
-      background-size: cover;      /* Faz a imagem cobrir a tela toda */
-      background-position: center; /* Centraliza a imagem */
-      background-attachment: fixed;/* Mantém o fundo fixo ao rolar */
-      background-repeat: no-repeat;
-      background-color: #1a1a1a;   /* Cor de fundo caso a imagem falhe */
-      
-      color: white; /* Alterado para branco para melhor leitura sobre a imagem */
       font-family: Arial, sans-serif;
+      background-color: white;
+    }
+
+    /* Seção de Início (Capa) */
+    .hero-section {
+      position: relative;
       height: 100vh;
+      width: 100%;
+      background-image: url('assets/asdasdasdasd.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    /* Cabeçalho (Logo + Botão) */
+    .header {
+      position: fixed; /* Fixa no topo para aparecer em todas as abas */
+      top: 50px;
+      left: 50px;
+      display: flex;
+      align-items: baseline; /* Alinha o texto pela base */
+      gap: 20px;
+      z-index: 1000;
     }
 
     .logo {
-      position: absolute;
-      top: 50px;
-      left: 50px;
-      width: 148px;
       font-size: 24px;
       font-weight: bold;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para destacar do fundo */
+      text-decoration: none;
+      color: inherit; /* Segue a cor do contexto (branco ou preto) */
     }
 
-    .status-container {
-      position: absolute; 
-      top: 50%; 
-      left: 50%; 
-      transform: translate(-50%, -50%);
-      text-align: center;
-      width: 100%;
+    .btn-projects {
+      font-size: 12px; /* Metade do tamanho da logo */
+      font-weight: 200; /* Fonte mais fina */
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .status-text {
-      font-size: 36px; 
-      color: #e0e0e0; 
-      font-weight: bold; 
-      margin: 0;
+      font-size: 36px;
+      font-weight: bold;
+      color: #e0e0e0;
       text-transform: uppercase;
-      letter-spacing: 2px;
       text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
     }
 
+    /* Seção de Projetos */
+    #projects {
+      width: 100%;
+      min-height: 5760px; /* Altura solicitada */
+      background-color: white;
+      color: black;
+      padding-top: 150px; /* Espaço para não cobrir o título fixo */
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Footer (Copyright) */
     footer {
-      position: absolute; 
-      bottom: 40px; 
-      width: 100%; 
+      width: 100%;
       text-align: center;
+      padding-bottom: 40px;
+      margin-top: auto; /* Joga para o final da área de scroll */
     }
 
     footer p {
-      font-size: 14px; 
-      color: white;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      font-size: 14px;
+      margin: 0;
     }
 
-    /* Ajustes para Celular */
-    @media (max-width: 600px) {
-      .logo {
-        left: 20px;
-        top: 20px;
-        font-size: 20px;
-      }
-      .status-text {
-        font-size: 28px;
-      }
+    /* Lógica de Cores Dinâmicas */
+    /* Quando o fundo for branco (seção projects), o título e botão ficam pretos */
+    @media (min-width: 1px) {
+        .header { color: white; } /* Cor padrão na capa */
+    }
+
+    /* Ajuste para mudar a cor do cabeçalho quando entrar na área branca */
+    /* (Nota: Para automação total de cor via scroll sem JS é complexo, 
+       mas por enquanto deixaremos o cabeçalho mudando conforme o fundo branco do scroll) */
+    
+    #projects-title {
+        font-size: 48px;
+        margin-top: 50px;
     }
   </style>
 </head>
 <body>
 
-  <div class="logo">Nommall.hub</div>
-
-  <div class="status-container">
-    <p class="status-text">in development</p>
+  <div class="header" id="nav-header">
+    <a href="#" class="logo">Nommall.hub</a>
+    <a href="#projects" class="btn-projects">Projects</a>
   </div>
 
-  <footer>
-    <p>© 2025 Nommall.hub</p>
-  </footer>
+  <section class="hero-section">
+    <p class="status-text">in development</p>
+  </section>
+
+  <section id="projects">
+    <h1 id="projects-title">PROJECTS</h1>
+    <p>Sua área de conteúdo começa aqui...</p>
+    
+    <footer>
+      <p>© 2025 Nommall.hub</p>
+    </footer>
+  </section>
+
+  <script>
+    // Pequeno script para mudar a cor do texto quando o usuário rolar a página
+    window.onscroll = function() {
+      var header = document.getElementById("nav-header");
+      if (window.pageYOffset > window.innerHeight - 50) {
+        header.style.color = "black";
+      } else {
+        header.style.color = "white";
+      }
+    };
+  </script>
 
 </body>
 </html>
