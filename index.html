@@ -11,7 +11,7 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #1a1a1a; /* Fundo escuro temporário para você ver que o site abriu */
+      background-color: #000; /* Fundo preto caso a imagem demore a carregar */
     }
 
     /* CAPA INICIAL */
@@ -19,13 +19,11 @@
       position: relative;
       height: 100vh;
       width: 100%;
-      /* TENTE ESTES DOIS CAMINHOS SE A IMAGEM NÃO APARECER: */
-      background-image: url('assets/asdasdasdasd.jpg.png'); 
-      /* Se não funcionar, tente mudar a linha acima para: url('asdasdasdasd.jpg'); */
+      /* AJUSTADO PARA O NOME EXATO DO SEU ARQUIVO NO GITHUB */
+      background-image: url('asdasdasdasd.jpg.png'); 
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-color: #1a1a1a;
     }
 
     /* HEADER FIXO */
@@ -47,11 +45,14 @@
       color: white;
       transition: opacity 0.3s ease, transform 0.1s ease;
       opacity: 0.7;
+      /* Bordinha sutil solicitada anteriormente */
+      text-shadow: -0.5px -0.5px 0 rgba(255,255,255,0.1), 0.5px -0.5px 0 rgba(255,255,255,0.1);
     }
 
     .logo { font-size: 24px; font-weight: bold; opacity: 1; }
     .btn-link { font-size: 12px; font-weight: 200; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
 
+    /* ANIMAÇÕES SUTIS */
     .nav-item:hover { opacity: 1; }
     .nav-item:active { transform: scale(0.95); }
 
@@ -70,7 +71,7 @@
       text-transform: uppercase; opacity: 0.3; margin: 0;
     }
 
-    /* SEÇÃO PROJECTS */
+    /* SEÇÃO PROJECTS (BRANCA) */
     #projects { 
       width: 100%; 
       height: 5760px; 
@@ -78,7 +79,7 @@
       position: relative;
     }
 
-    /* SEÇÃO CONTACT */
+    /* SEÇÃO CONTACT (BRANCA) */
     #contact {
       width: 100%;
       height: 100vh;
@@ -103,18 +104,13 @@
       font-size: 12px; font-weight: 200;
       text-transform: uppercase; text-decoration: none;
       color: black; letter-spacing: 1px;
+      transition: opacity 0.3s;
     }
+    .social-item:hover { opacity: 0.5; }
 
     /* FORMULÁRIO */
     .form-container { width: 60%; display: flex; flex-direction: column; }
-
-    .form-row { 
-      display: flex; 
-      align-items: center; 
-      gap: 15px; 
-      margin-bottom: 10px;
-    }
-
+    .form-row { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
     .form-label { font-size: 12px; font-weight: 200; text-transform: uppercase; white-space: nowrap; }
 
     input, textarea {
@@ -125,7 +121,6 @@
       box-sizing: border-box;
       background: none;
     }
-
     input { flex-grow: 1; } 
     textarea { height: 350px; resize: none; width: 100%; margin-bottom: 5px; }
 
@@ -138,7 +133,9 @@
       text-transform: uppercase;
       cursor: pointer;
       margin-top: 5px;
+      transition: transform 0.1s;
     }
+    .btn-send:active { transform: scale(0.95); }
 
     footer { position: absolute; bottom: 40px; width: 100%; text-align: center; }
     footer p { font-size: 10px; color: black; opacity: 0.5; margin: 0; }
@@ -161,14 +158,15 @@
 
   <section class="hero-section"></section>
 
-  <section id="projects"></section>
+  <section id="projects">
+    </section>
 
   <section id="contact">
     <div class="contact-container">
       <div class="social-links">
-        <a href="https://www.instagram.com/hugocom_h/" target="_blank" class="social-item">Instagram</a>
-        <a href="https://www.behance.net/Hugoal92" target="_blank" class="social-item">Behance</a>
-        <a href="https://www.linkedin.com/in/hugo-alexandre-maas-663984134/" target="_blank" class="social-item">Linkedin</a>
+        <a href="https://www.instagram.com/hugocom_h/" target="_blank" class="social-item nav-item">Instagram</a>
+        <a href="https://www.behance.net/Hugoal92" target="_blank" class="social-item nav-item">Behance</a>
+        <a href="https://www.linkedin.com/in/hugo-alexandre-maas-663984134/" target="_blank" class="social-item nav-item">Linkedin</a>
       </div>
 
       <form class="form-container" action="https://formspree.io/f/myknolql" method="POST">
