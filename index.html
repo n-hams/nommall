@@ -11,21 +11,24 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-color: white;
+      background-color: #1a1a1a; /* Fundo escuro temporário para você ver que o site abriu */
     }
 
-    /* CAPA INICIAL COM IMAGEM */
+    /* CAPA INICIAL */
     .hero-section {
       position: relative;
       height: 100vh;
       width: 100%;
+      /* TENTE ESTES DOIS CAMINHOS SE A IMAGEM NÃO APARECER: */
       background-image: url('assets/asdasdasdasd.jpg.png'); 
+      /* Se não funcionar, tente mudar a linha acima para: url('asdasdasdasd.jpg'); */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      background-color: #1a1a1a;
     }
 
-    /* HEADER */
+    /* HEADER FIXO */
     .header {
       position: fixed;
       top: 50px; left: 50px; right: 50px;
@@ -52,7 +55,7 @@
     .nav-item:hover { opacity: 1; }
     .nav-item:active { transform: scale(0.95); }
 
-    /* STATUS TEXT FIXED */
+    /* IN DEVELOPMENT FIXO */
     .status-container {
       position: fixed;
       top: 50%; left: 50%;
@@ -67,9 +70,15 @@
       text-transform: uppercase; opacity: 0.3; margin: 0;
     }
 
-    /* SEÇÕES */
-    #projects { width: 100%; height: 5760px; background-color: white; }
+    /* SEÇÃO PROJECTS */
+    #projects { 
+      width: 100%; 
+      height: 5760px; 
+      background-color: white; 
+      position: relative;
+    }
 
+    /* SEÇÃO CONTACT */
     #contact {
       width: 100%;
       height: 100vh;
@@ -80,20 +89,15 @@
       position: relative;
     }
 
-    /* LAYOUT CONTATO */
     .contact-container {
       width: 80%;
       max-width: 1200px;
       display: flex;
       justify-content: space-between;
-      align-items: stretch;
+      align-items: flex-start;
     }
 
-    .social-links {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+    .social-links { display: flex; flex-direction: column; gap: 20px; }
 
     .social-item {
       font-size: 12px; font-weight: 200;
@@ -101,11 +105,86 @@
       color: black; letter-spacing: 1px;
     }
 
-    /* FORMULÁRIO AJUSTADO */
-    .form-container {
-      width: 60%;
-      display: flex;
-      flex-direction: column;
+    /* FORMULÁRIO */
+    .form-container { width: 60%; display: flex; flex-direction: column; }
+
+    .form-row { 
+      display: flex; 
+      align-items: center; 
+      gap: 15px; 
+      margin-bottom: 10px;
     }
 
-    .form-
+    .form-label { font-size: 12px; font-weight: 200; text-transform: uppercase; white-space: nowrap; }
+
+    input, textarea {
+      border: 1px solid black;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+      outline: none;
+      box-sizing: border-box;
+      background: none;
+    }
+
+    input { flex-grow: 1; } 
+    textarea { height: 350px; resize: none; width: 100%; margin-bottom: 5px; }
+
+    .btn-send {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      font-size: 12px;
+      font-weight: 200;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    footer { position: absolute; bottom: 40px; width: 100%; text-align: center; }
+    footer p { font-size: 10px; color: black; opacity: 0.5; margin: 0; }
+
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="#" class="nav-item logo">Nommall.hub</a>
+    <div class="nav-group">
+      <a href="#contact" class="nav-item btn-link">Contact</a>
+      <a href="#projects" class="nav-item btn-link">Projects</a>
+    </div>
+  </div>
+
+  <div class="status-container">
+    <p class="status-text">in development</p>
+  </div>
+
+  <section class="hero-section"></section>
+
+  <section id="projects"></section>
+
+  <section id="contact">
+    <div class="contact-container">
+      <div class="social-links">
+        <a href="https://www.instagram.com/hugocom_h/" target="_blank" class="social-item">Instagram</a>
+        <a href="https://www.behance.net/Hugoal92" target="_blank" class="social-item">Behance</a>
+        <a href="https://www.linkedin.com/in/hugo-alexandre-maas-663984134/" target="_blank" class="social-item">Linkedin</a>
+      </div>
+
+      <form class="form-container" action="https://formspree.io/f/myknolql" method="POST">
+        <div class="form-row">
+          <span class="form-label">E-mail</span>
+          <input type="email" name="email" required>
+        </div>
+        <textarea name="message" required></textarea>
+        <button type="submit" class="btn-send">Send</button>
+      </form>
+    </div>
+
+    <footer>
+      <p>© 2025 Nommall.hub</p>
+    </footer>
+  </section>
+
+</body>
+</html>
