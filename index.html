@@ -13,25 +13,21 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-color: white; /* Garante que o fundo geral é branco */
+      background-color: white;
     }
 
-    /* TELA INICIAL (CAPA COM IMAGEM) */
+    /* TELA INICIAL (CAPA) */
     .hero-section {
       position: relative;
-      height: 100vh; /* Ocupa 100% da altura da tela */
+      height: 100vh;
       width: 100%;
-      /* VERIFIQUE SE O CAMINHO ABAIXO ESTÁ CORRETO NO SEU GITHUB */
-      background-image: url('asdasdasdasd.jpg.png'); 
+      background-image: url('assets/asdasdasdasd.jpg'); 
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
-    /* CABEÇALHO FIXO */
+    /* CABEÇALHO (Logo e Botões) */
     .header {
       position: fixed;
       top: 50px;
@@ -40,71 +36,105 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      z-index: 1000;
-      /* Faz o texto inverter a cor automaticamente sobre o fundo */
+      z-index: 2000;
+      /* Mágica da cor reversa + borda fina */
       mix-blend-mode: difference; 
       color: white; 
+    }
+
+    /* Estilo comum para Logo e Botões */
+    .nav-item {
+      text-decoration: none;
+      color: white;
+      /* Borda fina (stroke) que inverte com o mix-blend-mode */
+      text-shadow: 
+        -0.5px -0.5px 0 rgba(255,255,255,0.2),  
+         0.5px -0.5px 0 rgba(255,255,255,0.2),
+        -0.5px  0.5px 0 rgba(255,255,255,0.2),
+         0.5px  0.5px 0 rgba(255,255,255,0.2);
+      transition: opacity 0.3s ease, transform 0.1s ease;
+      opacity: 0.7; /* Começa um pouco mais "apagado" */
     }
 
     .logo {
       font-size: 24px;
       font-weight: bold;
-      text-decoration: none;
-      color: inherit;
+      opacity: 1; /* Logo sempre forte */
     }
 
-    .btn-projects {
+    .btn-link {
       font-size: 12px;
       font-weight: 200;
-      text-decoration: none;
-      color: inherit;
       text-transform: uppercase;
       letter-spacing: 1px;
+      cursor: pointer;
     }
 
-    /* TEXTO CENTRAL (IN DEVELOPMENT) */
+    /* ANIMAÇÃO SUTIL AO PASSAR O MOUSE */
+    .nav-item:hover {
+      opacity: 1; /* Intensidade total */
+    }
+
+    /* ANIMAÇÃO DE CLIQUE (MOVIMENTO DE APERTADO) */
+    .nav-item:active {
+      transform: scale(0.95); /* Diminui levemente como se afundasse */
+    }
+
+    /* TEXTO "IN DEVELOPMENT" ESTÁTICO */
+    .status-container {
+      position: fixed; /* Fica parado na tela durante o scroll */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 500;
+      pointer-events: none; /* Garante que não atrapalhe cliques no site */
+      mix-blend-mode: difference;
+    }
+
     .status-text {
       font-size: 36px;
       font-weight: bold;
-      color: #e0e0e0;
+      color: white;
       text-transform: uppercase;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+      opacity: 0.3; /* Intensidade reduzida em mais de 50% para ser discreto */
+      margin: 0;
     }
 
     /* SEÇÃO PROJECTS (BRANCA E LONGA) */
     #projects {
       width: 100%;
-      height: 5760px; /* Altura de scroll */
+      height: 5760px; 
       background-color: white;
-      position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end; /* Joga o footer para o final dos 5760px */
+      justify-content: flex-end;
     }
 
     footer {
       padding-bottom: 40px;
       text-align: center;
-      width: 100%;
     }
 
     footer p {
       font-size: 14px;
       color: black;
-      margin: 0;
+      mix-blend-mode: normal; /* Footer sempre preto no fundo branco */
     }
   </style>
 </head>
 <body>
 
   <div class="header">
-    <a href="#" class="logo">Nommall.hub</a>
-    <a href="#projects" class="btn-projects">Projects</a>
+    <a href="#" class="nav-item logo">Nommall.hub</a>
+    
+    <a href="#projects" class="nav-item btn-link">Projects</a>
   </div>
 
-  <section class="hero-section">
+  <div class="status-container">
     <p class="status-text">in development</p>
-  </section>
+  </div>
+
+  <section class="hero-section"></section>
 
   <section id="projects">
     <footer>
