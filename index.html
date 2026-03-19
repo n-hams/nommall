@@ -19,8 +19,7 @@
       position: relative;
       height: 100vh;
       width: 100%;
-      /* Verifique se a pasta no GitHub é 'assets' ou 'Assets' */
-      background-image: url('assets/asdasdasdasd.jpg.png'); 
+      background-image: url('assets/asdasdasdasd.jpg'); 
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -87,7 +86,7 @@
       max-width: 1200px;
       display: flex;
       justify-content: space-between;
-      align-items: stretch; /* Alinha o topo e fundo das colunas */
+      align-items: stretch;
     }
 
     .social-links {
@@ -102,102 +101,11 @@
       color: black; letter-spacing: 1px;
     }
 
-    /* FORMULÁRIO CORRIGIDO */
+    /* FORMULÁRIO AJUSTADO */
     .form-container {
-      width: 60%; /* Um pouco maior para caber o e-mail na linha */
+      width: 60%;
       display: flex;
       flex-direction: column;
     }
 
-    .form-row { 
-      display: flex; 
-      align-items: center; 
-      gap: 20px; 
-      margin-bottom: 15px;
-    }
-
-    .form-label { 
-      font-size: 12px; 
-      font-weight: 200; 
-      text-transform: uppercase;
-      white-space: nowrap; /* Impede o e-mail de pular linha */
-    }
-
-    input, textarea {
-      border: 1px solid black;
-      padding: 10px;
-      font-family: Arial, sans-serif;
-      outline: none;
-      box-sizing: border-box;
-    }
-
-    input { flex-grow: 1; } /* Faz o campo de e-mail ocupar o resto da linha */
-
-    textarea { 
-      height: 350px; 
-      resize: none; 
-      width: 100%;
-      margin-bottom: 10px;
-    }
-
-    .btn-send {
-      align-self: flex-end;
-      background: none;
-      border: none;
-      font-size: 12px;
-      font-weight: 200;
-      text-transform: uppercase;
-      cursor: pointer;
-      padding: 0; /* Alinhado perfeitamente com o fim da caixa */
-    }
-
-    footer { position: absolute; bottom: 40px; width: 100%; text-align: center; }
-    footer p { font-size: 10px; color: black; opacity: 0.5; }
-
-  </style>
-</head>
-<body>
-
-  <div class="header">
-    <a href="#" class="nav-item logo">Nommall.hub</a>
-    <div class="nav-group">
-      <a href="#contact" class="nav-item btn-link">Contact</a>
-      <a href="#projects" class="nav-item btn-link">Projects</a>
-    </div>
-  </div>
-
-  <div class="status-container">
-    <p class="status-text">in development</p>
-  </div>
-
-  <section class="hero-section"></section>
-
-  <section id="projects"></section>
-
-  <section id="contact">
-    <div class="contact-container">
-      
-      <div class="social-links">
-        <a href="https://www.instagram.com/hugocom_h/" target="_blank" class="social-item">Instagram</a>
-        <a href="https://www.behance.net/Hugoal92" target="_blank" class="social-item">Behance</a>
-        <a href="https://www.linkedin.com/in/hugo-alexandre-maas-663984134/" target="_blank" class="social-item">Linkedin</a>
-      </div>
-
-      <form class="form-container" action="https://formspree.io/f/seu_codigo_aqui" method="POST">
-        <div class="form-row">
-          <span class="form-label">E-mail</span>
-          <input type="email" name="email" required placeholder="seu@email.com">
-        </div>
-        <textarea name="message" required placeholder="Sua mensagem..."></textarea>
-        <button type="submit" class="btn-send">Send</button>
-      </form>
-
-    </div>
-
-    <footer>
-      <p>© 2025 Nommall.hub</p>
-    </footer>
-  </section>
-
-</body>
-</html>
+    .form-
