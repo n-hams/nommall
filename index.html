@@ -6,159 +6,86 @@
   <title>Nommall.hub</title>
   <style>
     html { scroll-behavior: smooth; }
+    body { margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: white; overflow-x: hidden; }
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: white;
-    }
-
-    /* CAPA INICIAL */
-    .hero-section {
-      position: relative;
-      height: 100vh;
-      width: 100%;
-      background-image: url('asdasdasdasd.jpg.png'); 
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    /* ESTILO DO MENU FIXO (TEXTOS) */
+    /* HEADER */
     .header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      padding: 40px 50px;
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      z-index: 2000;
-      color: black; /* Letra preta padrão */
-      transition: color 0.5s ease; /* Transição suave de cor */
-    }
-
-    /* O FUNDO TRANSPARENTE (SEPARADO) */
-    .header-bg {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 120px; /* Altura aproximada do header com padding */
-      background: rgba(255, 255, 255, 0.4); /* Transparência branca */
-      backdrop-filter: blur(5px); /* Efeito de vidro */
-      z-index: 1999; /* Fica logo atrás dos textos */
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-      opacity: 1; /* Começa visível */
+      position: fixed; top: 0; left: 0; right: 0;
+      padding: 40px 50px; display: flex; justify-content: space-between;
+      align-items: baseline; z-index: 2000; color: black;
+      background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px);
+      transition: opacity 0.5s ease;
     }
 
     .nav-group { display: flex; gap: 25px; }
-
-    .nav-item {
-      text-decoration: none;
-      color: inherit; /* Segue a cor do .header */
-      transition: opacity 0.3s ease, transform 0.1s ease;
-      opacity: 0.8;
-    }
-
-    .logo { font-size: 24px; font-weight: bold; opacity: 1; }
+    .nav-item { text-decoration: none; color: inherit; opacity: 0.8; transition: 0.3s; }
+    .logo { font-size: 24px; font-weight: bold; }
     .btn-link { font-size: 12px; font-weight: 200; text-transform: uppercase; letter-spacing: 1px; }
 
-    .nav-item:hover { opacity: 1; }
-    .nav-item:active { transform: scale(0.95); }
-
-    /* STATUS TEXT (IN DEVELOPMENT) */
+    /* STATUS TEXT */
     .status-container {
-      position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 500;
-      pointer-events: none;
-      text-align: center;
-      width: 90%;
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      z-index: 500; pointer-events: none; text-align: center; width: 90%;
     }
-
     .status-text {
-      font-size: 36px; 
-      font-weight: bold; 
-      color: black; 
-      text-transform: uppercase; 
-      opacity: 0.2; 
-      margin: 0;
-      white-space: nowrap;
+      font-size: 36px; font-weight: bold; color: black;
+      text-transform: uppercase; opacity: 0.1; white-space: nowrap;
     }
 
-    /* SEÇÕES */
-    #projects { width: 100%; height: 5760px; background-color: white; }
+    /* CAPA */
+    .hero-section {
+      height: 100vh; width: 100%;
+      background-image: url('asdasdasdasd.jpg.png'); 
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+    }
 
-    #contact {
-      width: 100%;
-      min-height: 100vh;
-      background-color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    /* ÁREA DA ANIMAÇÃO */
+    .scroll-sequence-container {
       position: relative;
-      padding: 100px 0;
+      width: 100%;
+      height: 2500px; /* Distância do scroll */
+      background-color: white;
     }
 
-    .contact-container {
-      width: 85%;
-      max-width: 1200px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+    .sticky-sequence {
+      position: sticky; top: 0; height: 100vh; width: 100%;
+      display: flex; justify-content: center; align-items: center;
+      opacity: 0; transition: opacity 0.3s ease;
     }
 
-    /* FORMULÁRIO */
+    /* Canvas com tamanho nativo para não perder qualidade */
+    canvas { 
+      width: 960px; /* Metade de 1920 */
+      height: 540px; /* Metade de 1080 */
+      max-width: 90vw; /* Ajuste para telas menores/celular */
+      height: auto;
+    }
+
+    /* CONTATO */
+    #contact {
+      width: 100%; min-height: 100vh; background-color: white;
+      display: flex; justify-content: center; align-items: center; position: relative;
+    }
+    .contact-container { width: 85%; max-width: 1200px; display: flex; justify-content: space-between; }
     .form-container { width: 60%; display: flex; flex-direction: column; }
-    .form-row { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
-    .form-label { font-size: 12px; font-weight: 200; text-transform: uppercase; }
+    input, textarea { border: 1px solid black; padding: 10px; outline: none; }
+    textarea { height: 300px; resize: none; }
+    .btn-send { align-self: flex-end; background: none; border: none; font-size: 12px; text-transform: uppercase; cursor: pointer; padding: 10px 0; }
 
-    input, textarea {
-      border: 1px solid black;
-      padding: 10px;
-      font-family: Arial, sans-serif;
-      outline: none;
-      box-sizing: border-box;
-    }
-    input { flex-grow: 1; } 
-    textarea { height: 350px; resize: none; width: 100%; margin-bottom: 5px; }
+    footer { position: absolute; bottom: 40px; width: 100%; text-align: center; font-size: 10px; opacity: 0.5; }
 
-    .btn-send {
-      align-self: flex-end;
-      background: none;
-      border: none;
-      font-size: 12px;
-      font-weight: 200;
-      text-transform: uppercase;
-      cursor: pointer;
-      color: black !important;
-      opacity: 1 !important;
-      padding: 10px 0;
-    }
-
-    /* RESPONSIVIDADE CELULAR */
     @media (max-width: 768px) {
       .header { padding: 20px; }
-      .header-bg { height: 70px; } /* Altura menor no celular */
-      .nav-group { gap: 15px; }
-      .logo { font-size: 18px; }
-      .status-text { font-size: 20px; }
-      
-      .contact-container { flex-direction: column; gap: 50px; }
+      .status-text { font-size: 18px; }
+      .contact-container { flex-direction: column; gap: 40px; }
       .form-container { width: 100%; }
-      .social-links { order: 2; }
+      canvas { width: 100%; }
     }
-
-    footer { position: absolute; bottom: 40px; width: 100%; text-align: center; }
-    footer p { font-size: 10px; color: black; opacity: 0.5; }
-
   </style>
 </head>
 <body>
 
-  <div class="header-bg" id="header-bg"></div>
-
-  <div class="header">
+  <div class="header" id="main-header">
     <a href="#" class="nav-item logo">Nommall.hub</a>
     <div class="nav-group">
       <a href="#contact" class="nav-item btn-link">Contact</a>
@@ -171,20 +98,24 @@
   </div>
 
   <section class="hero-section"></section>
-  <section id="projects"></section>
+
+  <div id="projects" class="scroll-sequence-container">
+    <div class="sticky-sequence" id="sticky-sequence">
+      <canvas id="sequence-canvas"></canvas>
+    </div>
+  </div>
 
   <section id="contact">
     <div class="contact-container">
       <div class="social-links">
-        <a href="https://www.instagram.com/hugocom_h/" target="_blank" class="social-item nav-item" style="color: black; display: block; margin-bottom: 20px; font-size: 12px; text-decoration: none; text-transform: uppercase;">Instagram</a>
-        <a href="https://www.behance.net/Hugoal92" target="_blank" class="social-item nav-item" style="color: black; display: block; margin-bottom: 20px; font-size: 12px; text-decoration: none; text-transform: uppercase;">Behance</a>
-        <a href="https://www.linkedin.com/in/hugo-alexandre-maas-663984134/" target="_blank" class="social-item nav-item" style="color: black; display: block; font-size: 12px; text-decoration: none; text-transform: uppercase;">Linkedin</a>
+          <a href="https://www.instagram.com/hugocom_h/" target="_blank" class="nav-item btn-link" style="display:block; margin-bottom:20px;">Instagram</a>
+          <a href="https://www.behance.net/Hugoal92" target="_blank" class="nav-item btn-link" style="display:block; margin-bottom:20px;">Behance</a>
+          <a href="https://www.linkedin.com/in/hugo-alexandre-maas-663984134/" target="_blank" class="nav-item btn-link" style="display:block;">Linkedin</a>
       </div>
-
       <form class="form-container" action="https://formspree.io/f/myknolql" method="POST">
-        <div class="form-row">
-          <span class="form-label">E-mail</span>
-          <input type="email" name="email" required>
+        <div style="display:flex; align-items:center; gap:15px; margin-bottom:10px;">
+          <span style="font-size:12px; text-transform:uppercase; white-space: nowrap;">E-mail</span>
+          <input type="email" name="email" required style="flex-grow:1;">
         </div>
         <textarea name="message" required></textarea>
         <button type="submit" class="btn-send">Send</button>
@@ -194,20 +125,61 @@
   </section>
 
   <script>
-    // Lógica para sumir APENAS com o fundo transparente no scroll
-    window.onscroll = function() {
-      var headerBg = document.getElementById("header-bg");
-      if (window.pageYOffset > 100) {
-        // Quando rola para baixo: esconde o fundo
-        headerBg.style.opacity = "0";
-        headerBg.style.visibility = "hidden";
-      } else {
-        // Quando está no topo: mostra o fundo
-        headerBg.style.opacity = "1";
-        headerBg.style.visibility = "visible";
-      }
-    };
-  </script>
+    const canvas = document.getElementById("sequence-canvas");
+    const context = canvas.getContext("2d");
+    const stickyContainer = document.getElementById("sticky-sequence");
+    const section = document.getElementById("projects");
 
+    // Tamanho real da imagem exportada (960x540)
+    canvas.width = 960;
+    canvas.height = 540;
+
+    const frameCount = 76;
+    const currentFrame = index => `sequence/Seq_${index.toString().padStart(5, '0')}.png`;
+
+    const images = [];
+    const airbnb = { frame: 0 };
+
+    for (let i = 0; i < frameCount; i++) {
+      const img = new Image();
+      img.src = currentFrame(i);
+      images.push(img);
+    }
+
+    images[0].onload = render;
+
+    function render() {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      if (images[airbnb.frame]) {
+        context.drawImage(images[airbnb.frame], 0, 0);
+      }
+    }
+
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.pageYOffset;
+      const startAnim = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const viewportHeight = window.innerHeight;
+
+      // Header logic
+      const header = document.getElementById("main-header");
+      header.style.opacity = (scrollTop > 100) ? "0" : "1";
+
+      // Visibilidade da animação
+      if (scrollTop >= startAnim - 200 && scrollTop <= startAnim + sectionHeight) {
+        stickyContainer.style.opacity = "1";
+      } else {
+        stickyContainer.style.opacity = "0";
+      }
+
+      // Cálculo do frame
+      const relativeScroll = scrollTop - startAnim;
+      const scrollFraction = relativeScroll / (sectionHeight - viewportHeight);
+      let frameIndex = Math.min(frameCount - 1, Math.max(0, Math.floor(scrollFraction * frameCount)));
+
+      airbnb.frame = frameIndex;
+      render();
+    });
+  </script>
 </body>
 </html>
