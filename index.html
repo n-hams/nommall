@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nommall.hub</title>
   <style>
+    /* Isso aqui embaixo é o CSS (é o que dá a beleza ao site) */
     html { scroll-behavior: smooth; }
     body { margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: white; overflow-x: hidden; }
 
@@ -52,7 +53,8 @@
     canvas {
       width: 960px; height: 540px; 
       max-width: 95vw; height: auto;
-      background-color: #f9f9f9; /* Cor de fundo para você ver onde o fone deveria estar */
+      /* AJUSTE: Removi background-color e border para transparência real */
+      background-color: transparent; 
     }
 
     /* CONTATO */
@@ -119,8 +121,7 @@
 
     const frameCount = 76;
     
-    // TESTE: Tentei com dois underscores como vi no seu print. 
-    // Se não funcionar, mude para um underscore só: sequence/Seq_${...}
+    // CORREÇÃO: Mantive o DUPLO UNDERSCORE (Seq__) que vi no seu print do GitHub
     const currentFrame = index => `sequence/Seq__${index.toString().padStart(5, '0')}.png`;
 
     const images = [];
